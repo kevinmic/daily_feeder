@@ -6,19 +6,33 @@ class Name:
         return self._name
 
 
-class SecondSelector(Name):
-    value = 0
-    max_value = 59
+class NameValue(Name):
+    _value = 0
+    def __init__(self, max, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._max = max
+
+    def name(self):
+        return f'{super().name()}: {self._value}'
+
+    def max(self):
+        return self._max
 
 
-class MinuteSelector(Name):
-    value = 0
-    max_value = 59
+class SecondSelector(NameValue):
+    def __init__(self, *args, **kwargs):
+        super().__init__(59, *args, **kwargs)
 
 
-class HourSelector(Name):
-    value = 0
-    max_value = 23
+class MinuteSelector(NameValue):
+    def __init__(self, *args, **kwargs):
+        super().__init__(59, *args, **kwargs)
+
+
+class HourSelector(NameValue):
+    def __init__(self, *args, **kwargs):
+        super().__init__(23, *args, **kwargs)
+
 
 class MenuItem(Name):
     def __init__(self, key, name, values):
