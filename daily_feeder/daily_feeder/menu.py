@@ -43,18 +43,18 @@ class BaseDisplayer:
 class Counter(BaseDisplayer):
     _value = 0
 
-    def __init__(self, max, value_name_postpend=None, controller=CounterDisplayer, *args, **kwargs):
+    def __init__(self, max, value_postfix=None, controller=CounterDisplayer, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._max = max
-        self._value_name_postpend = value_name_postpend
+        self._value_postfix = value_postfix
 
         self._controller = controller
 
     def value_as_string(self, count = None):
         value = count if count else self._value
         value = str(value)
-        if self._value_name_postpend:
-            value += self._value_name_postpend
+        if self._value_postfix:
+            value += self._value_postfix
         return value
 
     def name(self, count = None):
