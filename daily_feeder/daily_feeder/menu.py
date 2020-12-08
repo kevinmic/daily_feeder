@@ -84,6 +84,15 @@ class Counter(BaseDisplayer):
             self._value = int(properties[key])
 
 
+class BooleanCounter(Counter):
+    def __init__(self, *args, **kwargs):
+        super().__init__(2, *args, **kwargs)
+
+    def value_as_string(self, count = None):
+        value = count if count else self._value
+        return 'True' if value else 'False'
+
+
 class SecondCounter(Counter):
     def __init__(self, *args, **kwargs):
         super().__init__(60, ' seconds', *args, **kwargs)
@@ -143,6 +152,7 @@ class MenuItem(BaseDisplayer):
 class ProgramSettings(MenuItem):
     def __init__(self, *args, **kwargs):
         values=[
+            BooleanCounter(key='enabled', name='Enabled'),
             SecondCounter(key='stir_seconds', name='Stir'),
             SecondCounter(key='dose_seconds', name='Dose'),
             MinuteCounter(key='freq_minutes', name='Frequency'),
