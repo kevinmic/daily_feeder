@@ -1,3 +1,7 @@
+import curses
+
+screen = curses.initscr()
+
 class FakeRotery:
     counter = 0
     _max = 0
@@ -16,25 +20,25 @@ class FakeRotery:
         self.counter = counter
 
     def watch(self):
-        previous = None
-        val = None
         while True:
-            print(f"PREVIOUS val:[{val}] option:[{previous}]")
-            print(f"SELECT YOUR OPTION:")
-            val = input()
+            val = screen.getch()
 
-            if val.startswith('h'):
+            # up
+            if val == 65:
                 curr_count = self.counter - 1
                 if curr_count >= self._min:
-                    previous = 'prev'
                     self.counter = curr_count
-                    self._rotate_callback()
-            if val.startswith('l'):
+                self._rotate_callback()
+
+            # down
+            elif val == 66:
                 curr_count = self.counter + 1
                 if curr_count <= self._max:
-                    previous = 'next'
                     self.counter = curr_count
-                    self._rotate_callback()
-            if val.startswith(' '):
-                previous = 'select'
+                self._rotate_callback()
+
+            elif val == 67 or val == 68:
                 self._select_callback()
+
+            else:
+                self._rotate_callback()

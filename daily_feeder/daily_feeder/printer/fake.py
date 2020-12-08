@@ -1,8 +1,10 @@
-from os import system
+import curses
+
+screen = curses.initscr()
 
 def printer(header, lines):
-    #system('clear')
-    print(header)
-    print('-------')
+    screen.clear()
+    screen.addstr(header + "\n")
+    screen.addstr('-------\n')
     for line in lines:
-        print(line)
+        screen.addstr(line + "\n")
