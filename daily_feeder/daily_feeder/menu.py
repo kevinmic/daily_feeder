@@ -1,4 +1,5 @@
 from daily_feeder.displayer import MenuDisplayer, CounterDisplayer
+from daily_feeder.data_saver import read, write
 
 
 class BaseDisplayer:
@@ -24,6 +25,20 @@ class BaseDisplayer:
     def parent_controller(self, printer):
         return self._parent.controller(printer)
 
+    def data_key(self):
+        data_key = self._key
+        if data_key:
+            parent = self.parent
+            while parent:
+                print(f"curr_key:{data_key} parent:{parent}")
+                if parent._key:
+                    data_key = parent._key + '.' + data_key
+                parent = parent.parent
+        return data_key
+
+    def _load(self, properties):
+        pass
+
 
 class Counter(BaseDisplayer):
     _value = 0
@@ -47,6 +62,17 @@ class Counter(BaseDisplayer):
     @value.setter
     def value(self, value):
         self._value = value
+
+    def write(self):
+        key = self.data_key()
+        if key:
+            print(f"WRITING KEY:{key} value:{self._value}")
+            write({key: self._value})
+
+    def _load(self, properties):
+        key = self.data_key()
+        if key and key in properties:
+            self._value = int(properties[key])
 
 
 class SecondCounter(Counter):
@@ -88,31 +114,34 @@ class MenuItem(BaseDisplayer):
             values += ['Return']
         return values
 
+    def _load(self, properties):
+        for value in self._values:
+            value._load(properties)
 
 class ProgramSettings(MenuItem):
     def __init__(self, *args, **kwargs):
         values=[
             SecondCounter(key='stir_seconds', name='Stir Seconds'),
             SecondCounter(key='dose_seconds', name='Dose Seconds'),
-            MenuItem('dose_freq', 'Dose Frequency', values=[
-                HourCounter(key='hour', name='Hours'),
-                MinuteCounter(key='minutes', name='Minutes'),
-            ]),
+            HourCounter(key='freq_hour', name='Frequency Hours'),
+            MinuteCounter(key='freq_minutes', name='Frequency Minutes'),
             HourCounter(key='start_hour', name='Start Hour'),
             HourCounter(key='end_hour', name='End Hour'),
         ]
         super().__init__(values=values, *args, **kwargs)
 
+RUN_NOW_C = SecondCounter(key='', name='Dose Seconds')
+RUN_NOW_M = MenuItem('run_now', 'Run Now', values=[RUN_NOW_C])
+PROGRAM_1 = ProgramSettings('pg_1', 'Program 1')
+PROGRAM_2 = ProgramSettings('pg_1', 'Program 2')
+CLOCK_M = MenuItem('', 'Set Time', values=[HourCounter(key='', name='Hour'), MinuteCounter(key='', name='Minute'), ])
 
-MENU = MenuItem('root', 'MAIN', values=[
-    MenuItem('run_now', 'Run Now', values=[
-        SecondCounter(key='', name='Dose Seconds')
-    ]),
-    ProgramSettings('pg_1', 'Program 1'),
-    ProgramSettings('pg_1', 'Program 2'),
-    MenuItem('', 'Set Time', values=[
-        HourCounter(key='', name='Hour'),
-        MinuteCounter(key='', name='Minute'),
-    ]),
+MAIN_MENU = MenuItem('', 'MAIN', values=[
+    RUN_NOW_M,
+    PROGRAM_1,
+    PROGRAM_2,
+    CLOCK_M,
 ])
+
+MAIN_MENU._load(read())
 

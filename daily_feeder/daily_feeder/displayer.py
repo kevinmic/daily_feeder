@@ -1,3 +1,5 @@
+from daily_feeder.data_saver import write
+
 max_display = 3
 
 class MenuDisplayer:
@@ -50,4 +52,6 @@ class CounterDisplayer:
 
     def select_index(self, selected_index):
         self._counter.value = selected_index
+        self._counter.write()
+
         return self._counter.parent_controller(self._printer)

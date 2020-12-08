@@ -1,6 +1,13 @@
 from pigpio_encoder import pigpio_encoder
 
 
+# Requires that pigpiod installed and running
+#
+# INSTALL
+# sudo apt-get install pigpio python3-pigpio
+#
+# RUN
+# sudo pigpiod
 ROTARY = pigpio_encoder.Rotary(clk=17, dt=18, sw=27)
 
 
