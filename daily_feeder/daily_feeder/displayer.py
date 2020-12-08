@@ -48,7 +48,8 @@ class CounterDisplayer:
         return self._counter.value
 
     def display_index(self, selected_index):
-        self._printer(self._counter.parent.name(), ['', self._counter.name(), f'>     {selected_index}'])
+        name = self._counter.value_as_string(selected_index)
+        self._printer(self._counter.parent.name(), ['', self._counter.name(), f'>     {name}'])
 
     def select_index(self, selected_index):
         self._counter.value = selected_index

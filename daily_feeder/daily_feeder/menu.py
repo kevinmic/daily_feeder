@@ -42,14 +42,23 @@ class BaseDisplayer:
 
 class Counter(BaseDisplayer):
     _value = 0
-    _controller = CounterDisplayer
 
-    def __init__(self, max, *args, **kwargs):
+    def __init__(self, max, value_name_postpend=None, controller=CounterDisplayer, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._max = max
+        self._value_name_postpend = value_name_postpend
+
+        self._controller = controller
+
+    def value_as_string(self, count = None):
+        value = count if count else self._value
+        value = str(value)
+        if self._value_name_postpend:
+            value += self._value_name_postpend
+        return value
 
     def name(self, count = None):
-        value = count if count else self._value
+        value = self.value_as_string(count)
         return f'{super().name()}: {value}'
 
     def max(self):
@@ -77,18 +86,31 @@ class Counter(BaseDisplayer):
 
 class SecondCounter(Counter):
     def __init__(self, *args, **kwargs):
-        super().__init__(59, *args, **kwargs)
+        super().__init__(60, ' seconds', *args, **kwargs)
 
 
 class MinuteCounter(Counter):
     def __init__(self, *args, **kwargs):
-        super().__init__(59, *args, **kwargs)
+        super().__init__(60, ' mintues', *args, **kwargs)
 
 
 class HourCounter(Counter):
     def __init__(self, *args, **kwargs):
-        super().__init__(23, *args, **kwargs)
+        super().__init__(24, ' hours', *args, **kwargs)
 
+
+class AmPmHourCounter(Counter):
+    def __init__(self, *args, **kwargs):
+        super().__init__(24, *args, **kwargs)
+
+    def value_as_string(self, count = None):
+        index = count if count else self._value
+        am_pm = 'AM' if index < 12 else 'PM'
+        if index == 0:
+            index = 12
+        elif index > 12:
+            index -= 12
+        return f'{index} {am_pm}'
 
 class MenuItem(BaseDisplayer):
     _controller = MenuDisplayer
@@ -121,19 +143,19 @@ class MenuItem(BaseDisplayer):
 class ProgramSettings(MenuItem):
     def __init__(self, *args, **kwargs):
         values=[
-            SecondCounter(key='stir_seconds', name='Stir Seconds'),
-            SecondCounter(key='dose_seconds', name='Dose Seconds'),
-            HourCounter(key='freq_hour', name='Frequency Hours'),
-            MinuteCounter(key='freq_minutes', name='Frequency Minutes'),
-            HourCounter(key='start_hour', name='Start Hour'),
-            HourCounter(key='end_hour', name='End Hour'),
+            SecondCounter(key='stir_seconds', name='Stir'),
+            SecondCounter(key='dose_seconds', name='Dose'),
+            MinuteCounter(key='freq_minutes', name='Frequency'),
+            HourCounter(key='freq_hour', name='Frequency'),
+            AmPmHourCounter(key='start_hour', name='Start Hour'),
+            AmPmHourCounter(key='end_hour', name='End Hour'),
         ]
         super().__init__(values=values, *args, **kwargs)
 
-RUN_NOW_C = SecondCounter(key='', name='Dose Seconds')
+RUN_NOW_C = SecondCounter(key='', name='Dose')
 RUN_NOW_M = MenuItem('run_now', 'Run Now', values=[RUN_NOW_C])
 PROGRAM_1 = ProgramSettings('pg_1', 'Program 1')
-PROGRAM_2 = ProgramSettings('pg_1', 'Program 2')
+PROGRAM_2 = ProgramSettings('pg_2', 'Program 2')
 CLOCK_M = MenuItem('', 'Set Time', values=[HourCounter(key='', name='Hour'), MinuteCounter(key='', name='Minute'), ])
 
 MAIN_MENU = MenuItem('', 'MAIN', values=[
