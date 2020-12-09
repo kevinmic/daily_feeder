@@ -1,5 +1,7 @@
 from daily_feeder.displayer import MenuDisplayer, CounterDisplayer
 from daily_feeder.data_saver import read, write
+from datetime import date, datetime, time
+import logging
 
 
 class BaseDisplayer:
@@ -149,18 +151,73 @@ class MenuItem(BaseDisplayer):
         for value in self._values:
             value._load(properties)
 
+
+def current_minute_of_day():
+    now = datetime.now()
+    return now.hour * 60 + now.minute
+
+
 class ProgramSettings(MenuItem):
     def __init__(self, *args, **kwargs):
+        self._enabled = BooleanCounter(key='enabled', name='Enabled')
+        self._stir_seconds = SecondCounter(key='stir_seconds', name='Stir')
+        self._dose_seconds = SecondCounter(key='dose_seconds', name='Dose')
+        self._frequency_minutes = MinuteCounter(key='freq_minutes', name='Frequency')
+        self._frequency_hours = HourCounter(key='freq_hour', name='Frequency')
+        self._start_hour = AmPmHourCounter(key='start_hour', name='Start Hour')
+        self._end_hour = AmPmHourCounter(key='end_hour', name='End Hour')
         values=[
-            BooleanCounter(key='enabled', name='Enabled'),
-            SecondCounter(key='stir_seconds', name='Stir'),
-            SecondCounter(key='dose_seconds', name='Dose'),
-            MinuteCounter(key='freq_minutes', name='Frequency'),
-            HourCounter(key='freq_hour', name='Frequency'),
-            AmPmHourCounter(key='start_hour', name='Start Hour'),
-            AmPmHourCounter(key='end_hour', name='End Hour'),
+            self._enabled,
+            self._stir_seconds,
+            self._dose_seconds,
+            self._frequency_minutes,
+            self._frequency_hours,
+            self._start_hour,
+            self._end_hour,
         ]
         super().__init__(values=values, *args, **kwargs)
+
+    def next_run(self):
+        if not self.enabled():
+            return None
+
+        increment = self.frequency_hours() * 60 + self.frequency_minutes()
+        end_hour = self.end_hour()
+        if end_hour <= self.start_hour():
+            end_hour += 24
+        end_minute_of_day = end_hour * 60
+
+        next_minute_of_day = self.start_hour() * 60
+        while True:
+            logging.debug(f'next:{next_minute_of_day} end:{end_minute_of_day} curr:{current_minute_of_day()}')
+            if next_minute_of_day >= end_minute_of_day:
+                return None
+            if next_minute_of_day > current_minute_of_day():
+                return datetime.combine(date.today(),
+                                        time(hour=int(next_minute_of_day/60), minute=next_minute_of_day%60))
+            next_minute_of_day += increment
+
+    def enabled(self):
+        return self._enabled.value
+
+    def stir_seconds(self):
+        return self._stir_seconds.value
+
+    def dose_seconds(self):
+        return self._dose_seconds.value
+
+    def frequency_minutes(self):
+        return self._frequency_minutes.value
+
+    def frequency_hours(self):
+        return self._frequency_hours.value
+
+    def start_hour(self):
+        return self._start_hour.value
+
+    def end_hour(self):
+        return self._end_hour.value
+
 
 RUN_NOW_C = SecondCounter(key='', name='Dose')
 RUN_NOW_M = MenuItem('run_now', 'Run Now', values=[RUN_NOW_C])
