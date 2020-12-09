@@ -1,3 +1,4 @@
+import logging
 
 
 DATA_FILE = 'daily_feeder.properties'
@@ -10,6 +11,7 @@ def read():
     RETURN: Dictionary of String: String values
     """
 
+    logging.debug("Reading data file")
     properties = {}
     try:
         with open(DATA_FILE, 'r') as f:
@@ -18,7 +20,7 @@ def read():
                 if len(values) >= 2:
                     properties[values[0]] = values[1].strip()
     except FileNotFoundError:
-        # Ignore
+        logging.exception("Reading data file FAILED")
         pass
 
     return properties
@@ -35,6 +37,8 @@ def write(values, clean=False):
 
     Return: None
         """
+    for key, value in values.items():
+        logging.info(f"WRITING {key}:[{value}] clean:{clean}")
 
     properties = {} if clean else read()
     properties.update(values)
