@@ -1,9 +1,7 @@
-from datetime import date, datetime, time, timedelta
-from daily_feeder.menu import ProgramSettings
+from daily_feeder.menu import ProgramSettingsMenuController
 
-from daily_feeder.minute_comparer import allowed_minutes_checker
 
-class Pg2(ProgramSettings):
+class Pg2(ProgramSettingsMenuController):
     def __init__(self, start_hour, end_hour, increment, current_minute_of_day):
         self._start_hour = start_hour
         self._end_hour = end_hour

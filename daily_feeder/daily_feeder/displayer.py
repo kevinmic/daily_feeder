@@ -34,7 +34,7 @@ class MenuDisplayer:
         self._printer(self._menu.name(), print_items)
 
     def select_index(self, selected_index):
-        return self._menu.values()[selected_index].controller(self._printer)
+        return self._menu.values()[selected_index].displayer(self._printer)
 
 class CounterDisplayer:
     def __init__(self, counter, printer):
@@ -55,4 +55,4 @@ class CounterDisplayer:
         self._counter.value = selected_index
         self._counter.write()
 
-        return self._counter.parent_controller(self._printer)
+        return self._counter.parent_displayer(self._printer)

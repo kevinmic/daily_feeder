@@ -1,8 +1,8 @@
 from datetime import datetime, date, time, timedelta
 
-from daily_feeder.menu import ProgramSettings
+from daily_feeder.menu import ProgramSettingsMenuController
 
-class Pg2(ProgramSettings):
+class Pg2(ProgramSettingsMenuController):
     def __init__(self, start_hour, end_hour, increment, current_minute_of_day):
         self._start_hour = start_hour
         self._end_hour = end_hour

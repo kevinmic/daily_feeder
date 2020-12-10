@@ -8,6 +8,6 @@ pump_controller = PumpController()
 pump_controller.start()
 
 try:
-    watch(MAIN_MENU.controller(print_lcd))
+    watch(MAIN_MENU.displayer(print_lcd))
 except:
     pump_controller.quit()

@@ -6,7 +6,7 @@ from daily_feeder.displayer import MenuDisplayer, CounterDisplayer
 from daily_feeder.minute_comparer import allowed_minutes_checker
 
 
-class BaseDisplayer:
+class BaseController:
     def __init__(self, key, name):
         self._key = key
         self._name = name
@@ -23,11 +23,11 @@ class BaseDisplayer:
     def parent(self, parent):
         self._parent = parent
 
-    def controller(self, printer):
-        return self._controller(self, printer)
+    def displayer(self, printer):
+        return self._displayer(self, printer)
 
-    def parent_controller(self, printer):
-        return self._parent.controller(printer)
+    def parent_displayer(self, printer):
+        return self._parent.displayer(printer)
 
     def data_key(self):
         data_key = self._key
@@ -44,15 +44,14 @@ class BaseDisplayer:
         pass
 
 
-class Counter(BaseDisplayer):
+class CounterController(BaseController):
     _value = 0
+    _displayer = CounterDisplayer
 
-    def __init__(self, max, value_postfix=None, controller=CounterDisplayer, *args, **kwargs):
+    def __init__(self, max, value_postfix=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._max = max
         self._value_postfix = value_postfix
-
-        self._controller = controller
 
     def value_as_string(self, count=None):
         value = count if count is not None else self._value
@@ -88,7 +87,7 @@ class Counter(BaseDisplayer):
             self._value = int(properties[key])
 
 
-class BooleanCounter(Counter):
+class BooleanCounter(CounterController):
     def __init__(self, *args, **kwargs):
         super().__init__(2, *args, **kwargs)
 
@@ -97,22 +96,22 @@ class BooleanCounter(Counter):
         return 'True' if value else 'False'
 
 
-class SecondCounter(Counter):
+class SecondCounter(CounterController):
     def __init__(self, *args, **kwargs):
         super().__init__(60, ' seconds', *args, **kwargs)
 
 
-class MinuteCounter(Counter):
+class MinuteCounter(CounterController):
     def __init__(self, *args, **kwargs):
         super().__init__(60, ' mintues', *args, **kwargs)
 
 
-class HourCounter(Counter):
+class HourCounter(CounterController):
     def __init__(self, *args, **kwargs):
         super().__init__(24, ' hours', *args, **kwargs)
 
 
-class AmPmHourCounter(Counter):
+class AmPmHourCounter(CounterController):
     def __init__(self, *args, **kwargs):
         super().__init__(24, *args, **kwargs)
 
@@ -125,8 +124,8 @@ class AmPmHourCounter(Counter):
             index -= 12
         return f'{index} {am_pm}'
 
-class MenuItem(BaseDisplayer):
-    _controller = MenuDisplayer
+class MenuController(BaseController):
+    _displayer = MenuDisplayer
 
     def __init__(self, key, name, values):
         super().__init__(key=key, name=name)
@@ -159,7 +158,7 @@ def current_minute_of_day():
     return now.hour * 60 + now.minute
 
 
-class ProgramSettings(MenuItem):
+class ProgramSettingsMenuController(MenuController):
     def __init__(self, *args, **kwargs):
         self._enabled = BooleanCounter(key='enabled', name='Enabled')
         self._stir_seconds = SecondCounter(key='stir_seconds', name='Stir')
@@ -243,12 +242,12 @@ class ProgramSettings(MenuItem):
 
 
 RUN_NOW_C = SecondCounter(key='', name='Dose')
-RUN_NOW_M = MenuItem('run_now', 'Run Now', values=[RUN_NOW_C])
-PROGRAM_1 = ProgramSettings('pg_1', 'Program 1')
-PROGRAM_2 = ProgramSettings('pg_2', 'Program 2')
-CLOCK_M = MenuItem('', 'Set Time', values=[HourCounter(key='', name='Hour'), MinuteCounter(key='', name='Minute'), ])
+RUN_NOW_M = MenuController('run_now', 'Run Now', values=[RUN_NOW_C])
+PROGRAM_1 = ProgramSettingsMenuController('pg_1', 'Program 1')
+PROGRAM_2 = ProgramSettingsMenuController('pg_2', 'Program 2')
+CLOCK_M = MenuController('', 'Set Time', values=[HourCounter(key='', name='Hour'), MinuteCounter(key='', name='Minute'), ])
 
-MAIN_MENU = MenuItem('', 'MAIN', values=[
+MAIN_MENU = MenuController('', 'MAIN', values=[
     RUN_NOW_M,
     PROGRAM_1,
     PROGRAM_2,
@@ -256,4 +255,3 @@ MAIN_MENU = MenuItem('', 'MAIN', values=[
 ])
 
 MAIN_MENU._load(read())
-
