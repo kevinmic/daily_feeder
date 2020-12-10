@@ -35,7 +35,6 @@ class BaseController:
         if data_key:
             parent = self.parent
             while parent:
-                print(f"curr_key:{data_key} parent:{parent}")
                 if parent._key:
                     data_key = parent._key + '.' + data_key
                 parent = parent.parent
@@ -79,7 +78,6 @@ class CounterController(BaseController):
     def write(self):
         key = self.data_key()
         if key:
-            print(f"WRITING KEY:{key} value:{self._value}")
             write({key: self._value})
 
     def load(self, properties, printer):

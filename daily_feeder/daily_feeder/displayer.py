@@ -23,7 +23,6 @@ class MenuDisplayer:
         if self._menu.parent:
             items.append("Return")
 
-        print(",".join(items))
         min_index = 0
         if selected_index - max_display >= 0:
             min_index = selected_index - max_display + 1

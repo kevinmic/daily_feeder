@@ -43,7 +43,7 @@ def write(values, clean=False):
     properties = {} if clean else read()
     properties.update(values)
 
-    print("WRITING PROPERTIES", properties)
+    logging.info("WRITING PROPERTIES", properties)
     with open(DATA_FILE, 'w') as f:
         for key, value in properties.items():
             f.write(f'{key}: {value}\n')
