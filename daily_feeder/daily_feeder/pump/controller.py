@@ -8,6 +8,7 @@ class PumpController(threading.Thread):
     _quit = False
     _run_list = []
     _run_dict = {}
+    _reset = False
 
     def __init__(self, programs, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -31,6 +32,8 @@ class PumpController(threading.Thread):
 
     def _reload_data(self):
         # Only run if we don't have an entry for a given program
+        self._reset_run()
+
         missing = None in self._run_dict.values()
         if missing:
             now = datetime.now()
@@ -68,6 +71,27 @@ class PumpController(threading.Thread):
 
     def _menu_timeout(self):
         pass
+
+    def _reset_run(self):
+        """Used by threading processor to recalculate the run list if needed"""
+        if self._reset:
+            self._run_list.clear()
+            for key in self._run_dict:
+                self._run_dict[key] = None
+            self._reset = False
+
+    def next_run(self):
+        if self._run_list:
+            return self._run_list[0][0]
+        return None
+
+    def active_run(self):
+        # TODO:
+        return None
+
+    def reset(self):
+        """Hook into threaded processor to tell it that it needs to reset"""
+        self._reset = True
 
     def quit(self):
         self._quit = True;

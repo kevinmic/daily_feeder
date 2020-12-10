@@ -8,3 +8,4 @@ def printer(header, lines):
     screen.addstr('-------\n')
     for line in lines:
         screen.addstr(line + "\n")
+    screen.refresh()

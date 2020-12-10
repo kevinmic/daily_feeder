@@ -3,6 +3,12 @@ import logging
 
 DATA_FILE = 'daily_feeder.properties'
 
+_write_hooks = []
+
+
+def add_write_hook(hook):
+    _write_hooks.append(hook)
+
 
 def read():
     """Returns a dictionary of values stored in DATA_FILE
@@ -47,3 +53,6 @@ def write(values, clean=False):
     with open(DATA_FILE, 'w') as f:
         for key, value in properties.items():
             f.write(f'{key}: {value}\n')
+
+    for hook in _write_hooks:
+        hook()

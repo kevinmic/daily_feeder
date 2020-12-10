@@ -8,6 +8,7 @@ from daily_feeder.encoder.rotary import watch, refresh_callback
 from daily_feeder.menu import SecondCounter, MenuController, ProgramSettingsMenuController, HourCounter, MinuteCounter
 from daily_feeder.printer.lcd import print_lcd
 from daily_feeder.pump.controller import PumpController
+from daily_feeder.data_saver import add_write_hook
 
 
 class RefreshDisplay(threading.Thread):
@@ -53,8 +54,12 @@ def load_menu(properties, printer):
 
 
 STARTING_VIEW, programs = load_menu(daily_feeder.data_saver.read(), print_lcd)
-threads = [PumpController(programs), RefreshDisplay(refresh_callback)]
 
+controller = PumpController(programs)
+STARTING_VIEW.displayer().pump_controller(controller)
+threads = [controller, RefreshDisplay(refresh_callback)]
+
+add_write_hook(controller.reset)
 try:
     for thread in threads:
         thread.start()

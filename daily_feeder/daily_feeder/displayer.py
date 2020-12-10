@@ -1,6 +1,5 @@
 import logging
-from datetime import datetime, time
-
+from datetime import datetime, timedelta
 
 max_display = 3
 
@@ -78,10 +77,38 @@ class CounterDisplayer:
 
 
 class MainDisplayer(MenuDisplayer):
+    _pump_controller = None
+
     def display_index(self, selected_index):
-        now = datetime.now()
-        values = [
-            f"{now.hour}:{now.minute}:{now.second}"
-        ]
-        logging.info(f"DISPLAY MAIN: {values[0]}")
-        self._printer("DAILY FEEDER", values)
+        if not self._display_pump_active():
+            now = datetime.now()
+            values = [
+                now.strftime("Time: %I:%M:%S %p"),
+                self._next_run_str(),
+            ]
+            self._printer("DAILY FEEDER", values)
+
+    def pump_controller(self, pump_controller):
+        self._pump_controller = pump_controller
+
+    def _display_pump_active(self):
+        if self._pump_controller:
+            active_run = self._pump_controller.active_run()
+            if active_run:
+                self._printer("DAILY FEEDER", ["RUNNING NOW"])
+                return True
+
+        return False
+
+    def _next_run_str(self):
+        return_str = "Next: Off"
+        if self._pump_controller:
+            next_run = self._pump_controller.next_run()
+            if next_run:
+                seconds = (next_run - datetime.now()).seconds + 1
+                delta_str = str(timedelta(seconds=seconds))
+                if delta_str.startswith('0:'):
+                    delta_str = "0" + delta_str
+                return_str = f"Next: {delta_str}"
+
+        return return_str
