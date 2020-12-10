@@ -22,7 +22,7 @@ def select_short():
 def set_menu(controller):
     global curr_controller
     curr_controller = controller
-    logging.debug(f"set menu: {controller}")
+    logging.debug(f"set menu: {controller} max:{curr_controller.max_count()}, curr:{curr_controller.current_count()}")
     rotary.reset(0, curr_controller.max_count()-1, curr_controller.current_count())
     rotary_callback()
 

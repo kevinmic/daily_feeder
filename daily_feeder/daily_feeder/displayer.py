@@ -1,18 +1,28 @@
+import logging
+
+
 max_display = 3
 
 class MenuDisplayer:
+    _curr_index = 0
+
     def __init__(self, menu, printer):
         self._menu = menu
         self._printer = printer
 
     def max_count(self):
-        return len(self._menu.values())
+        has_parent = 1 if self._menu.parent else 0
+        return len(self._menu.values()) + has_parent
 
     def current_count(self):
-        return 0
+        return self._curr_index
 
     def display_index(self, selected_index):
+        self._curr_index = selected_index
         items = self._menu.value_names()
+        if self._menu.parent:
+            items.append("Return")
+
         print(",".join(items))
         min_index = 0
         if selected_index - max_display >= 0:
@@ -32,8 +42,18 @@ class MenuDisplayer:
         self._printer(self._menu.name(), print_items)
 
     def select_index(self, selected_index):
-        child = self._menu.values()[selected_index]
-        return child.displayer()
+        next_menu = self
+        values = self._menu.values()
+        if len(values) > selected_index:
+            next_menu = values[selected_index].displayer()
+            if isinstance(next_menu, MenuDisplayer):
+                # Reset the selected index when going to a child
+                next_menu._curr_index = 0
+        elif self._menu.parent:
+            # Keep previous selected index of parent
+            next_menu = self._menu.parent.displayer()
+
+        return next_menu
 
 class CounterDisplayer:
     def __init__(self, counter, printer):

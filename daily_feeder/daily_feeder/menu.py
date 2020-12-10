@@ -139,16 +139,10 @@ class MenuController(BaseController):
             value.parent = self
 
     def values(self):
-        values = self._values
-        if self.parent:
-            values = values + [self._parent]
-        return values
+        return self._values
 
     def value_names(self):
-        values = [value.name() for value in self._values]
-        if self.parent:
-            values += ['Return']
-        return values
+        return [value.name() for value in self._values]
 
     def load(self, properties, printer):
         super().load(properties, printer)
