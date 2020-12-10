@@ -1,19 +1,20 @@
-from daily_feeder.menu import PROGRAM_1, PROGRAM_2
 from datetime import datetime, timedelta
 from time import sleep
 import threading
 import logging
 
-programs = {PROGRAM_1.data_key(): PROGRAM_1, PROGRAM_2.data_key(): PROGRAM_2}
 
 class PumpController(threading.Thread):
     _quit = False
     _run_list = []
     _run_dict = {}
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, programs, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for key in programs.keys():
+        self._programs = {}
+        for program in programs:
+            key = program.data_key()
+            self._programs[key] = program
             self._run_dict[key] = None
 
     def run(self):
@@ -33,7 +34,7 @@ class PumpController(threading.Thread):
         missing = None in self._run_dict.values()
         if missing:
             now = datetime.now()
-            for key, p in programs.items():
+            for key, p in self._programs.items():
                 if not self._run_dict[key]:
                     logging.debug(f"Reload Data key:{key}")
                     next_run = p.next_run()
@@ -56,7 +57,7 @@ class PumpController(threading.Thread):
             self._run_dict[key] = None
             if not skip:
                 if now < (runtime + timedelta(minutes=1)):
-                    self._run_dose(programs[key])
+                    self._run_dose(self._programs[key])
                 else:
                     logging.warning(f"SKIPPING PROGRAM - {key}")
 

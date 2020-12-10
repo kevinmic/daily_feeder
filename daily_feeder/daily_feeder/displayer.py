@@ -1,5 +1,3 @@
-from daily_feeder.data_saver import write
-
 max_display = 3
 
 class MenuDisplayer:
@@ -34,7 +32,8 @@ class MenuDisplayer:
         self._printer(self._menu.name(), print_items)
 
     def select_index(self, selected_index):
-        return self._menu.values()[selected_index].displayer(self._printer)
+        child = self._menu.values()[selected_index]
+        return child.displayer()
 
 class CounterDisplayer:
     def __init__(self, counter, printer):
@@ -55,4 +54,4 @@ class CounterDisplayer:
         self._counter.value = selected_index
         self._counter.write()
 
-        return self._counter.parent_displayer(self._printer)
+        return self._counter.parent_displayer()

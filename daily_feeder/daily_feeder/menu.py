@@ -1,12 +1,13 @@
-import logging
 from datetime import date, datetime, time, timedelta
 
-from daily_feeder.data_saver import read, write
+from daily_feeder.data_saver import write
 from daily_feeder.displayer import MenuDisplayer, CounterDisplayer
 from daily_feeder.minute_comparer import allowed_minutes_checker
 
 
 class BaseController:
+    _displayer = None
+
     def __init__(self, key, name):
         self._key = key
         self._name = name
@@ -23,11 +24,11 @@ class BaseController:
     def parent(self, parent):
         self._parent = parent
 
-    def displayer(self, printer):
-        return self._displayer(self, printer)
+    def displayer(self):
+        return self._displayer_inst
 
-    def parent_displayer(self, printer):
-        return self._parent.displayer(printer)
+    def parent_displayer(self):
+        return self._parent.displayer()
 
     def data_key(self):
         data_key = self._key
@@ -40,8 +41,8 @@ class BaseController:
                 parent = parent.parent
         return data_key
 
-    def _load(self, properties):
-        pass
+    def load(self, properties, printer):
+        self._displayer_inst = self._displayer(self, printer)
 
 
 class CounterController(BaseController):
@@ -81,7 +82,8 @@ class CounterController(BaseController):
             print(f"WRITING KEY:{key} value:{self._value}")
             write({key: self._value})
 
-    def _load(self, properties):
+    def load(self, properties, printer):
+        super().load(properties, printer)
         key = self.data_key()
         if key and key in properties:
             self._value = int(properties[key])
@@ -103,7 +105,7 @@ class SecondCounter(CounterController):
 
 class MinuteCounter(CounterController):
     def __init__(self, *args, **kwargs):
-        super().__init__(60, ' mintues', *args, **kwargs)
+        super().__init__(60, ' minutes', *args, **kwargs)
 
 
 class HourCounter(CounterController):
@@ -148,9 +150,10 @@ class MenuController(BaseController):
             values += ['Return']
         return values
 
-    def _load(self, properties):
+    def load(self, properties, printer):
+        super().load(properties, printer)
         for value in self._values:
-            value._load(properties)
+            value.load(properties, printer)
 
 
 def current_minute_of_day():
@@ -239,19 +242,3 @@ class ProgramSettingsMenuController(MenuController):
 
     def end_hour(self):
         return self._end_hour.value
-
-
-RUN_NOW_C = SecondCounter(key='', name='Dose')
-RUN_NOW_M = MenuController('run_now', 'Run Now', values=[RUN_NOW_C])
-PROGRAM_1 = ProgramSettingsMenuController('pg_1', 'Program 1')
-PROGRAM_2 = ProgramSettingsMenuController('pg_2', 'Program 2')
-CLOCK_M = MenuController('', 'Set Time', values=[HourCounter(key='', name='Hour'), MinuteCounter(key='', name='Minute'), ])
-
-MAIN_MENU = MenuController('', 'MAIN', values=[
-    RUN_NOW_M,
-    PROGRAM_1,
-    PROGRAM_2,
-    CLOCK_M,
-])
-
-MAIN_MENU._load(read())

@@ -31,9 +31,9 @@ def select_long(*args, **kwargs):
     logging.info("Select Long Callback")
 
 
-def watch(controller):
+def watch(displayer):
     logging.info("Start Watch")
     global rotary
-    rotary = Rotary(controller, select_callback=select_short, rotate_callback=rotary_callback)
-    set_menu(controller)
+    rotary = Rotary(displayer, select_callback=select_short, rotate_callback=rotary_callback)
+    set_menu(displayer)
     rotary.watch()

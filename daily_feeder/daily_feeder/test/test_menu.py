@@ -2,6 +2,7 @@ from datetime import datetime, date, time, timedelta
 
 from daily_feeder.menu import ProgramSettingsMenuController
 
+
 class Pg2(ProgramSettingsMenuController):
     def __init__(self, start_hour, end_hour, increment, current_minute_of_day):
         self._start_hour = start_hour
@@ -108,3 +109,27 @@ def test_even_all():
 
 def get_time(day, hour, minute):
     return datetime.combine(date.today(), time(hour=hour, minute=minute)) + timedelta(days=day)
+
+def test_load_menu():
+    properties = {
+        'pg.enabled': 1,
+        'pg.stir_seconds': 2,
+        'pg.dose_seconds': 3,
+        'pg.freq_minutes': 4,
+        'pg.freq_hour': 5,
+        'pg.start_hour': 6,
+        'pg.end_hour': 7,
+    }
+    printer = ""
+    pg = ProgramSettingsMenuController('pg', 'Program 1')
+    pg.load(properties, printer)
+    values = pg.values()
+
+    assert 7 == len(values)
+    assert values[0].name() == "Enabled: True"
+    assert values[1].name() == "Stir: 2 seconds"
+    assert values[2].name() == "Dose: 3 seconds"
+    assert values[3].name() == "Frequency: 4 minutes"
+    assert values[4].name() == "Frequency: 5 hours"
+    assert values[5].name() == "Start Hour: 6 AM"
+    assert values[6].name() == "End Hour: 7 AM"
