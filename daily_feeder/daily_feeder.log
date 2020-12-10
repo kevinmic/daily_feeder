@@ -1,0 +1,564 @@
+INFO:root:Start Watch
+INFO:root:set menu: <daily_feeder.displayer.MenuDisplayer object at 0x108ba4940>
+INFO:root:Start Watch
+INFO:root:set menu: <daily_feeder.displayer.MenuDisplayer object at 0x105007940>
+INFO:root:Start Watch
+INFO:root:set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10aace940>
+INFO:root:Start Watch
+INFO:root:set menu: <daily_feeder.displayer.MenuDisplayer object at 0x106958940>
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Start Watch
+INFO:root:set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10a9f9940>
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Rotate Callback
+INFO:root:Select Callback
+INFO:root:set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10a9f9a90>
+INFO:root:Rotate Callback
+2020-12-08 18:38:11,456 Start Watch
+2020-12-08 18:38:11,457 set menu: <daily_feeder.displayer.MenuDisplayer object at 0x107ce4940>
+2020-12-08 18:38:11,457 Rotate Callback
+2020-12-08 18:46:11,206 Reading data file
+2020-12-08 18:46:11,206 Reading data file FAILED
+Traceback (most recent call last):
+  File "/kapps/kevin/pi/python/daily_feeder/daily_feeder/daily_feeder/data_saver.py", line 17, in read
+    with open(DATA_FILE, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'daily_feeder.properties'
+2020-12-08 18:46:11,211 Start Watch
+2020-12-08 18:46:11,211 set menu: <daily_feeder.displayer.MenuDisplayer object at 0x105037940>
+2020-12-08 18:46:11,211 Rotate Callback
+2020-12-08 18:47:46,476 INFO:Reading data file
+2020-12-08 18:47:46,476 ERROR:Reading data file FAILED
+Traceback (most recent call last):
+  File "/kapps/kevin/pi/python/daily_feeder/daily_feeder/daily_feeder/data_saver.py", line 17, in read
+    with open(DATA_FILE, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'daily_feeder.properties'
+2020-12-08 18:47:46,480 INFO:Start Watch
+2020-12-08 18:47:46,480 INFO:set menu: <daily_feeder.displayer.MenuDisplayer object at 0x100b9f940>
+2020-12-08 18:47:46,480 INFO:Rotate Callback
+2020-12-08 18:47:57,193 INFO: Reading data file
+2020-12-08 18:47:57,194 ERROR: Reading data file FAILED
+Traceback (most recent call last):
+  File "/kapps/kevin/pi/python/daily_feeder/daily_feeder/daily_feeder/data_saver.py", line 17, in read
+    with open(DATA_FILE, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'daily_feeder.properties'
+2020-12-08 18:47:57,198 INFO: Start Watch
+2020-12-08 18:47:57,198 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x109e06940>
+2020-12-08 18:47:57,198 INFO: Rotate Callback
+2020-12-08 18:48:02,507 INFO: Rotate Callback
+2020-12-08 18:48:02,508 INFO: Rotate Callback
+2020-12-08 18:48:02,509 INFO: Rotate Callback
+2020-12-08 18:48:03,342 INFO: Rotate Callback
+2020-12-08 18:48:03,342 INFO: Rotate Callback
+2020-12-08 18:48:03,342 INFO: Select Callback
+2020-12-08 18:48:03,342 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x109e06a90>
+2020-12-08 18:48:03,342 INFO: Rotate Callback
+2020-12-08 18:48:04,723 INFO: Rotate Callback
+2020-12-08 18:48:04,724 INFO: Rotate Callback
+2020-12-08 18:48:04,725 INFO: Select Callback
+2020-12-08 18:48:04,725 INFO: set menu: <daily_feeder.displayer.CounterDisplayer object at 0x109ed9f10>
+2020-12-08 18:48:04,725 INFO: Rotate Callback
+2020-12-08 18:48:05,586 INFO: Rotate Callback
+2020-12-08 18:48:05,587 INFO: Rotate Callback
+2020-12-08 18:48:05,587 INFO: Rotate Callback
+2020-12-08 18:48:05,994 INFO: Rotate Callback
+2020-12-08 18:48:05,995 INFO: Rotate Callback
+2020-12-08 18:48:05,995 INFO: Select Callback
+2020-12-08 18:48:05,996 INFO: WRITING pg_1.enabled: 1 clean:False
+2020-12-08 18:48:05,996 INFO: Reading data file
+2020-12-08 18:48:05,996 ERROR: Reading data file FAILED
+Traceback (most recent call last):
+  File "/kapps/kevin/pi/python/daily_feeder/daily_feeder/daily_feeder/data_saver.py", line 17, in read
+    with open(DATA_FILE, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'daily_feeder.properties'
+2020-12-08 18:48:05,997 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x109e06a90>
+2020-12-08 18:48:05,997 INFO: Rotate Callback
+2020-12-08 18:48:46,668 INFO: Reading data file
+2020-12-08 18:48:46,672 INFO: Start Watch
+2020-12-08 18:48:46,672 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10a468940>
+2020-12-08 18:48:46,673 INFO: Rotate Callback
+2020-12-08 18:48:47,542 INFO: Rotate Callback
+2020-12-08 18:48:47,543 INFO: Rotate Callback
+2020-12-08 18:48:47,544 INFO: Rotate Callback
+2020-12-08 18:48:47,831 INFO: Rotate Callback
+2020-12-08 18:48:47,832 INFO: Rotate Callback
+2020-12-08 18:48:47,832 INFO: Select Callback
+2020-12-08 18:48:47,833 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10a468a90>
+2020-12-08 18:48:47,833 INFO: Rotate Callback
+2020-12-08 18:48:48,358 INFO: Rotate Callback
+2020-12-08 18:48:48,359 INFO: Rotate Callback
+2020-12-08 18:48:48,359 INFO: Rotate Callback
+2020-12-08 18:48:48,902 INFO: Rotate Callback
+2020-12-08 18:48:48,903 INFO: Rotate Callback
+2020-12-08 18:48:48,903 INFO: Select Callback
+2020-12-08 18:48:48,903 INFO: set menu: <daily_feeder.displayer.CounterDisplayer object at 0x10a53f040>
+2020-12-08 18:48:48,904 INFO: Rotate Callback
+2020-12-08 18:48:50,070 INFO: Rotate Callback
+2020-12-08 18:48:50,071 INFO: Rotate Callback
+2020-12-08 18:48:50,071 INFO: Rotate Callback
+2020-12-08 18:48:50,321 INFO: Rotate Callback
+2020-12-08 18:48:50,321 INFO: Rotate Callback
+2020-12-08 18:48:50,322 INFO: Rotate Callback
+2020-12-08 18:48:50,355 INFO: Rotate Callback
+2020-12-08 18:48:50,356 INFO: Rotate Callback
+2020-12-08 18:48:50,356 INFO: Rotate Callback
+2020-12-08 18:48:50,399 INFO: Rotate Callback
+2020-12-08 18:48:50,400 INFO: Rotate Callback
+2020-12-08 18:48:50,400 INFO: Rotate Callback
+2020-12-08 18:48:50,436 INFO: Rotate Callback
+2020-12-08 18:48:50,436 INFO: Rotate Callback
+2020-12-08 18:48:50,436 INFO: Rotate Callback
+2020-12-08 18:48:50,470 INFO: Rotate Callback
+2020-12-08 18:48:50,471 INFO: Rotate Callback
+2020-12-08 18:48:50,471 INFO: Rotate Callback
+2020-12-08 18:48:50,504 INFO: Rotate Callback
+2020-12-08 18:48:50,505 INFO: Rotate Callback
+2020-12-08 18:48:50,505 INFO: Rotate Callback
+2020-12-08 18:48:50,537 INFO: Rotate Callback
+2020-12-08 18:48:50,537 INFO: Rotate Callback
+2020-12-08 18:48:50,537 INFO: Rotate Callback
+2020-12-08 18:48:50,568 INFO: Rotate Callback
+2020-12-08 18:48:50,569 INFO: Rotate Callback
+2020-12-08 18:48:50,569 INFO: Rotate Callback
+2020-12-08 18:48:50,601 INFO: Rotate Callback
+2020-12-08 18:48:50,602 INFO: Rotate Callback
+2020-12-08 18:48:50,602 INFO: Rotate Callback
+2020-12-08 18:48:50,640 INFO: Rotate Callback
+2020-12-08 18:48:50,640 INFO: Rotate Callback
+2020-12-08 18:48:50,641 INFO: Rotate Callback
+2020-12-08 18:48:50,668 INFO: Rotate Callback
+2020-12-08 18:48:50,669 INFO: Rotate Callback
+2020-12-08 18:48:50,669 INFO: Rotate Callback
+2020-12-08 18:48:50,702 INFO: Rotate Callback
+2020-12-08 18:48:50,703 INFO: Rotate Callback
+2020-12-08 18:48:50,703 INFO: Rotate Callback
+2020-12-08 18:48:50,736 INFO: Rotate Callback
+2020-12-08 18:48:50,736 INFO: Rotate Callback
+2020-12-08 18:48:50,736 INFO: Rotate Callback
+2020-12-08 18:48:50,769 INFO: Rotate Callback
+2020-12-08 18:48:50,769 INFO: Rotate Callback
+2020-12-08 18:48:50,770 INFO: Rotate Callback
+2020-12-08 18:48:50,803 INFO: Rotate Callback
+2020-12-08 18:48:50,803 INFO: Rotate Callback
+2020-12-08 18:48:50,803 INFO: Rotate Callback
+2020-12-08 18:48:50,837 INFO: Rotate Callback
+2020-12-08 18:48:50,837 INFO: Rotate Callback
+2020-12-08 18:48:50,838 INFO: Rotate Callback
+2020-12-08 18:48:50,869 INFO: Rotate Callback
+2020-12-08 18:48:50,870 INFO: Rotate Callback
+2020-12-08 18:48:50,870 INFO: Rotate Callback
+2020-12-08 18:48:50,902 INFO: Rotate Callback
+2020-12-08 18:48:50,902 INFO: Rotate Callback
+2020-12-08 18:48:50,902 INFO: Rotate Callback
+2020-12-08 18:48:51,181 INFO: Rotate Callback
+2020-12-08 18:48:51,182 INFO: Rotate Callback
+2020-12-08 18:48:51,183 INFO: Rotate Callback
+2020-12-08 18:48:51,433 INFO: Rotate Callback
+2020-12-08 18:48:51,433 INFO: Rotate Callback
+2020-12-08 18:48:51,434 INFO: Rotate Callback
+2020-12-08 18:48:51,465 INFO: Rotate Callback
+2020-12-08 18:48:51,466 INFO: Rotate Callback
+2020-12-08 18:48:51,466 INFO: Rotate Callback
+2020-12-08 18:48:51,505 INFO: Rotate Callback
+2020-12-08 18:48:51,505 INFO: Rotate Callback
+2020-12-08 18:48:51,505 INFO: Rotate Callback
+2020-12-08 18:48:51,534 INFO: Rotate Callback
+2020-12-08 18:48:51,534 INFO: Rotate Callback
+2020-12-08 18:48:51,534 INFO: Rotate Callback
+2020-12-08 18:48:51,569 INFO: Rotate Callback
+2020-12-08 18:48:51,570 INFO: Rotate Callback
+2020-12-08 18:48:51,570 INFO: Rotate Callback
+2020-12-08 18:48:51,603 INFO: Rotate Callback
+2020-12-08 18:48:51,603 INFO: Rotate Callback
+2020-12-08 18:48:51,604 INFO: Rotate Callback
+2020-12-08 18:48:51,638 INFO: Rotate Callback
+2020-12-08 18:48:51,638 INFO: Rotate Callback
+2020-12-08 18:48:51,638 INFO: Rotate Callback
+2020-12-08 18:48:52,238 INFO: Rotate Callback
+2020-12-08 18:48:52,239 INFO: Rotate Callback
+2020-12-08 18:48:52,239 INFO: Rotate Callback
+2020-12-08 18:48:52,430 INFO: Rotate Callback
+2020-12-08 18:48:52,430 INFO: Rotate Callback
+2020-12-08 18:48:52,431 INFO: Rotate Callback
+2020-12-08 18:48:52,606 INFO: Rotate Callback
+2020-12-08 18:48:52,606 INFO: Rotate Callback
+2020-12-08 18:48:52,607 INFO: Rotate Callback
+2020-12-08 18:48:52,782 INFO: Rotate Callback
+2020-12-08 18:48:52,782 INFO: Rotate Callback
+2020-12-08 18:48:52,783 INFO: Rotate Callback
+2020-12-08 18:48:53,230 INFO: Rotate Callback
+2020-12-08 18:48:53,230 INFO: Rotate Callback
+2020-12-08 18:48:53,231 INFO: Rotate Callback
+2020-12-08 18:48:53,582 INFO: Rotate Callback
+2020-12-08 18:48:53,583 INFO: Rotate Callback
+2020-12-08 18:48:53,583 INFO: Select Callback
+2020-12-08 18:48:53,583 INFO: WRITING pg_1.stir_seconds:[30] clean:False
+2020-12-08 18:48:53,583 INFO: Reading data file
+2020-12-08 18:48:53,584 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10a468a90>
+2020-12-08 18:48:53,584 INFO: Rotate Callback
+2020-12-08 18:48:54,158 INFO: Rotate Callback
+2020-12-08 18:48:54,158 INFO: Rotate Callback
+2020-12-08 18:48:54,159 INFO: Rotate Callback
+2020-12-08 18:48:54,318 INFO: Rotate Callback
+2020-12-08 18:48:54,318 INFO: Rotate Callback
+2020-12-08 18:48:54,319 INFO: Rotate Callback
+2020-12-08 18:48:54,598 INFO: Rotate Callback
+2020-12-08 18:48:54,598 INFO: Rotate Callback
+2020-12-08 18:48:54,599 INFO: Select Callback
+2020-12-08 18:48:54,599 INFO: set menu: <daily_feeder.displayer.CounterDisplayer object at 0x10a53f040>
+2020-12-08 18:48:54,599 INFO: Rotate Callback
+2020-12-08 18:48:55,406 INFO: Rotate Callback
+2020-12-08 18:48:55,406 INFO: Rotate Callback
+2020-12-08 18:48:55,407 INFO: Select Callback
+2020-12-08 18:48:55,407 INFO: WRITING pg_1.dose_seconds:[0] clean:False
+2020-12-08 18:48:55,407 INFO: Reading data file
+2020-12-08 18:48:55,408 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10a468a90>
+2020-12-08 18:48:55,408 INFO: Rotate Callback
+2020-12-08 18:48:56,062 INFO: Rotate Callback
+2020-12-08 18:48:56,062 INFO: Rotate Callback
+2020-12-08 18:48:56,063 INFO: Select Callback
+2020-12-08 18:48:56,063 INFO: set menu: <daily_feeder.displayer.CounterDisplayer object at 0x10a53f040>
+2020-12-08 18:48:56,063 INFO: Rotate Callback
+2020-12-08 18:48:56,806 INFO: Rotate Callback
+2020-12-08 18:48:56,806 INFO: Rotate Callback
+2020-12-08 18:48:56,807 INFO: Select Callback
+2020-12-08 18:48:56,807 INFO: WRITING pg_1.enabled:[1] clean:False
+2020-12-08 18:48:56,808 INFO: Reading data file
+2020-12-08 18:48:56,808 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10a468a90>
+2020-12-08 18:48:56,808 INFO: Rotate Callback
+2020-12-08 18:48:57,669 INFO: Rotate Callback
+2020-12-08 18:48:57,670 INFO: Rotate Callback
+2020-12-08 18:48:57,671 INFO: Rotate Callback
+2020-12-08 18:48:57,845 INFO: Rotate Callback
+2020-12-08 18:48:57,846 INFO: Rotate Callback
+2020-12-08 18:48:57,847 INFO: Rotate Callback
+2020-12-08 18:48:58,077 INFO: Rotate Callback
+2020-12-08 18:48:58,078 INFO: Rotate Callback
+2020-12-08 18:48:58,079 INFO: Select Callback
+2020-12-08 18:48:58,079 INFO: set menu: <daily_feeder.displayer.CounterDisplayer object at 0x10a53f040>
+2020-12-08 18:48:58,079 INFO: Rotate Callback
+2020-12-08 18:48:58,781 INFO: Rotate Callback
+2020-12-08 18:48:58,782 INFO: Rotate Callback
+2020-12-08 18:48:58,783 INFO: Rotate Callback
+2020-12-08 18:48:59,069 INFO: Rotate Callback
+2020-12-08 18:48:59,070 INFO: Rotate Callback
+2020-12-08 18:48:59,071 INFO: Rotate Callback
+2020-12-08 18:48:59,237 INFO: Rotate Callback
+2020-12-08 18:48:59,238 INFO: Rotate Callback
+2020-12-08 18:48:59,239 INFO: Rotate Callback
+2020-12-08 18:48:59,488 INFO: Rotate Callback
+2020-12-08 18:48:59,489 INFO: Rotate Callback
+2020-12-08 18:48:59,490 INFO: Rotate Callback
+2020-12-08 18:48:59,522 INFO: Rotate Callback
+2020-12-08 18:48:59,522 INFO: Rotate Callback
+2020-12-08 18:48:59,522 INFO: Rotate Callback
+2020-12-08 18:49:00,485 INFO: Rotate Callback
+2020-12-08 18:49:00,486 INFO: Rotate Callback
+2020-12-08 18:49:00,487 INFO: Rotate Callback
+2020-12-08 18:49:00,685 INFO: Rotate Callback
+2020-12-08 18:49:00,686 INFO: Rotate Callback
+2020-12-08 18:49:00,687 INFO: Rotate Callback
+2020-12-08 18:49:01,293 INFO: Rotate Callback
+2020-12-08 18:49:01,294 INFO: Rotate Callback
+2020-12-08 18:49:01,294 INFO: Rotate Callback
+2020-12-08 18:49:02,053 INFO: Rotate Callback
+2020-12-08 18:49:02,054 INFO: Rotate Callback
+2020-12-08 18:49:02,055 INFO: Select Callback
+2020-12-08 18:49:02,055 INFO: WRITING pg_1.dose_seconds:[4] clean:False
+2020-12-08 18:49:02,055 INFO: Reading data file
+2020-12-08 18:49:02,056 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10a468a90>
+2020-12-08 18:49:02,056 INFO: Rotate Callback
+2020-12-08 18:49:37,018 INFO: Reading data file
+2020-12-08 18:49:37,025 INFO: Start Watch
+2020-12-08 18:49:37,025 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10dab1940>
+2020-12-08 18:49:40,741 INFO: Select Callback
+2020-12-08 18:49:40,742 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10dab1a90>
+2020-12-08 18:49:42,997 INFO: Select Callback
+2020-12-08 18:49:42,997 INFO: set menu: <daily_feeder.displayer.CounterDisplayer object at 0x10db915e0>
+2020-12-08 18:49:47,468 INFO: Select Callback
+2020-12-08 18:49:47,469 INFO: WRITING pg_1.freq_minutes:[30] clean:False
+2020-12-08 18:49:47,469 INFO: Reading data file
+2020-12-08 18:49:47,470 INFO: set menu: <daily_feeder.displayer.MenuDisplayer object at 0x10dab1a90>
+2020-12-08 18:50:37,312 INFO: Start Watch
+2020-12-08 18:50:42,578 INFO: WRITING pg_1.freq_hour:[0] clean:False
+2020-12-08 18:50:52,570 INFO: WRITING pg_1.start_hour:[9] clean:False
+2020-12-08 18:50:59,505 INFO: WRITING pg_1.end_hour:[19] clean:False
+2020-12-08 19:00:20,017 INFO: Starting Pump Controller
+2020-12-08 19:00:20,017 INFO: Start Watch
+2020-12-08 19:00:54,260 INFO: Starting Pump Controller
+2020-12-08 19:00:54,260 INFO: Start Watch
+2020-12-08 19:00:54,260 INFO: Pump Controller Run
+2020-12-08 19:00:55,261 INFO: Pump Controller Run
+2020-12-08 19:00:56,262 INFO: Pump Controller Run
+2020-12-08 19:00:57,263 INFO: Pump Controller Run
+2020-12-08 19:00:58,264 INFO: Pump Controller Run
+2020-12-08 19:00:59,270 INFO: Pump Controller Run
+2020-12-08 19:01:00,274 INFO: Pump Controller Run
+2020-12-08 19:01:01,280 INFO: Pump Controller Run
+2020-12-08 19:01:02,281 INFO: Pump Controller Run
+2020-12-08 19:01:02,583 INFO: WRITING pg_1.freq_hour:[0] clean:False
+2020-12-08 19:01:03,282 INFO: Pump Controller Run
+2020-12-08 19:01:04,285 INFO: Pump Controller Run
+2020-12-08 19:01:05,286 INFO: Pump Controller Run
+2020-12-08 19:01:06,292 INFO: Pump Controller Run
+2020-12-08 19:01:07,295 INFO: Pump Controller Run
+2020-12-08 19:01:08,300 INFO: Pump Controller Run
+2020-12-08 19:01:09,303 INFO: Pump Controller Run
+2020-12-08 19:01:10,309 INFO: Pump Controller Run
+2020-12-08 19:01:11,314 INFO: Pump Controller Run
+2020-12-08 19:01:12,319 INFO: Pump Controller Run
+2020-12-08 19:01:13,319 INFO: Pump Controller Run
+2020-12-08 19:01:14,325 INFO: Pump Controller Run
+2020-12-08 19:01:15,326 INFO: Pump Controller Run
+2020-12-08 19:01:16,331 INFO: Pump Controller Run
+2020-12-08 19:01:17,340 INFO: Pump Controller Run
+2020-12-08 19:01:18,344 INFO: Pump Controller Run
+2020-12-08 19:01:19,345 INFO: Pump Controller Run
+2020-12-08 19:01:20,346 INFO: Pump Controller Run
+2020-12-08 19:01:21,347 INFO: Pump Controller Run
+2020-12-08 19:03:14,683 INFO: Starting Pump Controller
+2020-12-08 19:03:14,683 INFO: Start Watch
+2020-12-08 19:03:14,684 INFO: Pump Controller Run
+2020-12-08 19:03:15,684 INFO: Pump Controller Run
+2020-12-08 19:03:16,684 INFO: Pump Controller Run
+2020-12-08 19:03:17,689 INFO: Exiting Pump Controller
+2020-12-08 19:03:28,329 INFO: Starting Pump Controller
+2020-12-08 19:03:28,329 INFO: Start Watch
+2020-12-08 19:03:31,337 INFO: Exiting Pump Controller
+2020-12-08 23:03:41,481 INFO: Starting Pump Controller
+2020-12-08 23:03:41,481 INFO: Start Watch
+2020-12-08 23:03:49,722 INFO: Starting Pump Controller
+2020-12-08 23:03:49,723 INFO: Start Watch
+2020-12-08 23:04:43,443 INFO: Starting Pump Controller
+2020-12-08 23:04:43,443 INFO: Start Watch
+2020-12-08 23:09:48,957 INFO: Starting Pump Controller
+2020-12-08 23:09:48,958 INFO: Start Watch
+2020-12-08 23:12:05,378 INFO: Starting Pump Controller
+2020-12-08 23:12:05,378 INFO: Start Watch
+2020-12-08 23:14:36,802 INFO: Exiting Pump Controller
+2020-12-08 23:14:37,776 INFO: Starting Pump Controller
+2020-12-08 23:14:37,776 INFO: Start Watch
+2020-12-08 23:15:00,779 INFO: WRITING pg_1.freq_minutes:[2] clean:False
+2020-12-08 23:15:16,899 INFO: Exiting Pump Controller
+2020-12-08 23:15:17,737 INFO: Starting Pump Controller
+2020-12-08 23:15:17,737 INFO: Start Watch
+2020-12-08 23:16:00,834 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:01,839 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:02,842 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:03,845 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:04,847 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:05,850 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:06,853 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:07,856 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:08,858 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:09,861 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:10,863 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:11,865 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:12,867 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:13,870 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:14,875 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:15,879 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:16,882 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:17,890 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:18,892 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:19,895 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:20,899 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:21,901 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:22,904 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:23,906 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:24,909 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:25,912 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:26,915 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:27,916 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:28,919 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:29,922 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:30,925 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:31,927 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:32,930 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:33,932 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:34,935 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:35,938 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:36,941 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:37,944 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:38,947 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:39,949 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:40,952 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:41,955 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:42,957 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:43,960 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:44,962 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:45,964 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:46,966 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:47,972 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:48,974 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:16:49,979 INFO: Exiting Pump Controller
+2020-12-08 23:16:50,688 INFO: Starting Pump Controller
+2020-12-08 23:16:50,689 INFO: Start Watch
+2020-12-08 23:16:58,714 INFO: Exiting Pump Controller
+2020-12-08 23:24:59,532 INFO: Starting Pump Controller
+2020-12-08 23:24:59,532 INFO: Start Watch
+2020-12-08 23:25:33,989 INFO: WRITING pg_1.end_hour:[2] clean:False
+2020-12-08 23:26:00,845 WARNING: RUNNING PROGRAM - program:pg_1 stir:34 dose:4
+2020-12-08 23:27:52,200 INFO: Exiting Pump Controller
+2020-12-08 23:27:53,541 INFO: Starting Pump Controller
+2020-12-08 23:27:53,541 INFO: Start Watch
+2020-12-08 23:27:53,541 INFO: Reload Data
+2020-12-08 23:28:00,559 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:28:01,560 INFO: Reload Data
+2020-12-08 23:28:27,645 INFO: WRITING pg_1.end_hour:[19] clean:False
+2020-12-08 23:28:31,673 INFO: Exiting Pump Controller
+2020-12-08 23:28:32,462 INFO: Starting Pump Controller
+2020-12-08 23:28:32,462 INFO: Start Watch
+2020-12-08 23:28:32,462 INFO: Reload Data
+2020-12-08 23:28:33,467 INFO: Reload Data
+2020-12-08 23:28:34,474 INFO: Reload Data
+2020-12-08 23:28:35,482 INFO: Reload Data
+2020-12-08 23:28:36,490 INFO: Reload Data
+2020-12-08 23:28:37,498 INFO: Reload Data
+2020-12-08 23:28:38,503 INFO: Exiting Pump Controller
+2020-12-08 23:33:10,444 INFO: Starting Pump Controller
+2020-12-08 23:33:10,444 INFO: Start Watch
+2020-12-08 23:33:10,444 INFO: Reload Data
+2020-12-08 23:33:28,029 INFO: WRITING pg_1.end_hour:[19] clean:False
+2020-12-08 23:33:28,314 INFO: WRITING pg_1.enabled:[1] clean:False
+2020-12-08 23:33:28,386 INFO: WRITING pg_1.enabled:[1] clean:False
+2020-12-08 23:33:28,457 INFO: WRITING pg_1.enabled:[1] clean:False
+2020-12-08 23:33:28,525 INFO: WRITING pg_1.enabled:[1] clean:False
+2020-12-08 23:33:28,591 INFO: WRITING pg_1.enabled:[1] clean:False
+2020-12-08 23:33:28,658 INFO: WRITING pg_1.enabled:[1] clean:False
+2020-12-08 23:33:48,679 INFO: WRITING pg_1.end_hour:[0] clean:False
+2020-12-08 23:34:01,612 INFO: Reload Data
+2020-12-08 23:36:00,914 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:36:01,915 INFO: Reload Data
+2020-12-08 23:36:17,562 INFO: WRITING pg_2.enabled:[1] clean:False
+2020-12-08 23:36:19,746 INFO: WRITING pg_2.stir_seconds:[0] clean:False
+2020-12-08 23:36:21,003 INFO: WRITING pg_2.enabled:[1] clean:False
+2020-12-08 23:36:23,346 INFO: WRITING pg_2.stir_seconds:[5] clean:False
+2020-12-08 23:36:28,025 INFO: WRITING pg_2.dose_seconds:[10] clean:False
+2020-12-08 23:36:31,929 INFO: WRITING pg_2.freq_minutes:[1] clean:False
+2020-12-08 23:38:00,390 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:38:01,391 INFO: Reload Data
+2020-12-08 23:39:00,641 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:40:00,824 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:40:01,826 INFO: Reload Data
+2020-12-08 23:41:00,015 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:42:00,116 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:42:01,119 INFO: Reload Data
+2020-12-08 23:43:00,303 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:44:00,398 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:44:01,400 INFO: Reload Data
+2020-12-08 23:45:00,572 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:46:00,793 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:46:01,794 INFO: Reload Data
+2020-12-08 23:47:00,032 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:47:31,120 INFO: Exiting Pump Controller
+2020-12-08 23:47:31,906 INFO: Starting Pump Controller
+2020-12-08 23:47:31,906 INFO: Start Watch
+2020-12-08 23:49:01,172 INFO: Exiting Pump Controller
+2020-12-08 23:50:51,990 INFO: Starting Pump Controller
+2020-12-08 23:50:51,990 INFO: Start Watch
+2020-12-08 23:50:51,990 INFO: Reload Data key:pg_1
+2020-12-08 23:50:51,992 INFO: Reload Data key:pg_2
+2020-12-08 23:51:00,019 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:52:00,227 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:54:23,645 INFO: Exiting Pump Controller
+2020-12-08 23:54:24,460 INFO: Starting Pump Controller
+2020-12-08 23:54:24,461 INFO: Start Watch
+2020-12-08 23:54:24,461 INFO: Reload Data key:pg_1
+2020-12-08 23:54:24,463 INFO: Reload Data key:pg_2
+2020-12-08 23:55:00,558 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:55:01,560 INFO: Reload Data key:pg_2
+2020-12-08 23:55:12,603 INFO: Exiting Pump Controller
+2020-12-08 23:55:14,735 INFO: Starting Pump Controller
+2020-12-08 23:55:14,735 INFO: Start Watch
+2020-12-08 23:55:14,735 INFO: Reload Data key:pg_1
+2020-12-08 23:55:14,737 INFO: Next Run:2020-12-08 23:56:00 skip:False
+2020-12-08 23:55:14,737 INFO: Reload Data key:pg_2
+2020-12-08 23:55:14,742 INFO: Next Run:2020-12-08 23:56:00 skip:False
+2020-12-08 23:56:00,911 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:56:01,912 INFO: Reload Data key:pg_1
+2020-12-08 23:56:01,915 INFO: Next Run:2020-12-08 23:58:00 skip:False
+2020-12-08 23:56:01,916 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:56:02,916 INFO: Reload Data key:pg_2
+2020-12-08 23:56:02,924 INFO: Next Run:2020-12-08 23:57:00 skip:False
+2020-12-08 23:57:00,090 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:57:01,091 INFO: Reload Data key:pg_2
+2020-12-08 23:57:01,099 INFO: Next Run:2020-12-08 23:58:00 skip:False
+2020-12-08 23:58:00,251 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:58:01,256 INFO: Reload Data key:pg_1
+2020-12-08 23:58:01,260 INFO: Next Run:2020-12-08 23:59:00.256271 skip:True
+2020-12-08 23:58:01,260 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:58:02,265 INFO: Reload Data key:pg_2
+2020-12-08 23:58:02,274 INFO: Next Run:2020-12-08 23:59:00 skip:False
+2020-12-08 23:59:00,508 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-08 23:59:01,509 INFO: Reload Data key:pg_2
+2020-12-08 23:59:01,518 INFO: Next Run:2020-12-09 00:00:00.509818 skip:True
+2020-12-08 23:59:01,518 WARNING: RUNNING PROGRAM - program:pg_1 stir:30 dose:4
+2020-12-08 23:59:02,523 INFO: Reload Data key:pg_1
+2020-12-08 23:59:02,527 INFO: Next Run:2020-12-09 00:00:00.523456 skip:True
+2020-12-08 23:59:50,702 INFO: Exiting Pump Controller
+2020-12-08 23:59:51,530 INFO: Starting Pump Controller
+2020-12-08 23:59:51,530 INFO: Start Watch
+2020-12-08 23:59:51,530 INFO: Reload Data key:pg_1
+2020-12-08 23:59:51,532 INFO: Next Run:2020-12-09 00:00:00.530802 skip:True
+2020-12-08 23:59:51,532 INFO: Reload Data key:pg_2
+2020-12-08 23:59:51,537 INFO: Next Run:2020-12-09 00:00:00.530802 skip:True
+2020-12-09 00:00:00,566 WARNING: SKIPPING PROGRAM - pg_1
+2020-12-09 00:00:01,568 INFO: Reload Data key:pg_1
+2020-12-09 00:00:01,568 INFO: Next Run:2020-12-09 09:00:00 skip:False
+2020-12-09 00:00:01,569 WARNING: SKIPPING PROGRAM - pg_2
+2020-12-09 00:00:02,570 INFO: Reload Data key:pg_2
+2020-12-09 00:00:02,570 INFO: Next Run:2020-12-09 00:01:00 skip:False
+2020-12-09 00:01:00,768 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-09 00:01:01,769 INFO: Reload Data key:pg_2
+2020-12-09 00:01:01,769 INFO: Next Run:2020-12-09 00:02:00 skip:False
+2020-12-09 00:01:45,931 INFO: Exiting Pump Controller
+2020-12-09 00:05:25,440 INFO: Starting Pump Controller
+2020-12-09 00:05:25,440 INFO: Start Watch
+2020-12-09 00:05:25,440 INFO: Reload Data key:pg_1
+2020-12-09 00:05:25,441 INFO: Next Run:2020-12-09 09:00:00 skip:False
+2020-12-09 00:05:25,441 INFO: Reload Data key:pg_2
+2020-12-09 00:05:25,441 INFO: Next Run:2020-12-09 00:06:00 skip:False
+2020-12-09 00:06:00,566 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-09 00:06:01,568 INFO: Reload Data key:pg_2
+2020-12-09 00:06:01,568 INFO: Next Run:2020-12-09 00:07:00 skip:False
+2020-12-09 00:07:00,732 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-09 00:07:01,733 INFO: Reload Data key:pg_2
+2020-12-09 00:07:01,734 INFO: Next Run:2020-12-09 00:08:00 skip:False
+2020-12-09 00:07:59,855 INFO: Exiting Pump Controller
+2020-12-09 00:08:00,617 INFO: Starting Pump Controller
+2020-12-09 00:08:00,618 INFO: Start Watch
+2020-12-09 00:08:00,618 INFO: Next Run:2020-12-09 09:00:00 skip:False
+2020-12-09 00:08:00,618 INFO: Next Run:2020-12-09 00:09:00 skip:False
+2020-12-09 00:09:00,750 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-09 00:09:01,752 INFO: Next Run:2020-12-09 00:10:00 skip:False
+2020-12-09 00:09:07,768 INFO: Exiting Pump Controller
+2020-12-09 00:09:08,775 INFO: Starting Pump Controller
+2020-12-09 00:09:08,775 INFO: Start Watch
+2020-12-09 00:09:08,775 INFO: Next Run: key:pg_1 next:2020-12-09 09:00:00 skip:False
+2020-12-09 00:09:08,776 INFO: Next Run: key:pg_2 next:2020-12-09 00:10:00 skip:False
+2020-12-09 00:10:00,969 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-09 00:10:01,971 INFO: Next Run: key:pg_2 next:2020-12-09 00:11:00 skip:False
+2020-12-09 00:11:00,215 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-09 00:11:01,217 INFO: Next Run: key:pg_2 next:2020-12-09 00:12:00 skip:False
+2020-12-09 00:12:00,411 WARNING: RUNNING PROGRAM - program:pg_2 stir:5 dose:10
+2020-12-09 00:12:01,412 INFO: Next Run: key:pg_2 next:2020-12-09 00:13:00 skip:False
+2020-12-09 00:12:39,518 INFO: Exiting Pump Controller

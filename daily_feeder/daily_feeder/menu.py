@@ -1,7 +1,9 @@
-from daily_feeder.displayer import MenuDisplayer, CounterDisplayer
-from daily_feeder.data_saver import read, write
-from datetime import date, datetime, time
 import logging
+from datetime import date, datetime, time, timedelta
+
+from daily_feeder.data_saver import read, write
+from daily_feeder.displayer import MenuDisplayer, CounterDisplayer
+from daily_feeder.minute_comparer import allowed_minutes_checker
 
 
 class BaseDisplayer:
@@ -182,20 +184,38 @@ class ProgramSettings(MenuItem):
             return None
 
         increment = self.frequency_hours() * 60 + self.frequency_minutes()
-        end_hour = self.end_hour()
-        if end_hour <= self.start_hour():
-            end_hour += 24
-        end_minute_of_day = end_hour * 60
+        allowed_minutes = allowed_minutes_checker(self.start_hour() * 60, self.end_hour() * 60)
+        start_minutes = self.start_hour() * 60
 
-        next_minute_of_day = self.start_hour() * 60
-        while True:
-            logging.debug(f'next:{next_minute_of_day} end:{end_minute_of_day} curr:{current_minute_of_day()}')
-            if next_minute_of_day >= end_minute_of_day:
-                return None
-            if next_minute_of_day > current_minute_of_day():
-                return datetime.combine(date.today(),
-                                        time(hour=int(next_minute_of_day/60), minute=next_minute_of_day%60))
-            next_minute_of_day += increment
+        curr_minute = self.current_minute_of_day()
+        day_inc = 0
+        if curr_minute < start_minutes:
+            # if current minutes are before start_minutes then add a day
+            day_inc = 1440
+
+        # Find how far we should increment current time to reach the next offset
+        increment_offset = (start_minutes - (curr_minute + day_inc)) % increment
+        if increment_offset == 0:
+            # the offset is now() so jump to the next offset
+            increment_offset = increment
+
+        curr_date = datetime.combine(date.today(), time()) + timedelta(minutes=curr_minute)
+        next_offset = datetime.combine(date.today(), time()) + timedelta(minutes=curr_minute + increment_offset)
+        start_date = datetime.combine(date.today(), time(hour=self.start_hour()))
+        if start_date < curr_date:
+            start_date = start_date + timedelta(days=1)
+
+        if curr_date < start_date and next_offset >= start_date:
+            # If the current time and the offset time crossse the start boundry, then set
+            # the next offset to the start hour
+            next_offset = start_date
+
+        if (next_offset.hour * 60 + next_offset.minute) in allowed_minutes:
+            return next_offset
+        return None
+
+    def current_minute_of_day(self):
+        return current_minute_of_day()
 
     def enabled(self):
         return self._enabled.value
