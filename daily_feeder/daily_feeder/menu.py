@@ -125,10 +125,10 @@ class AmPmHourCounter(CounterController):
         return f'{index} {am_pm}'
 
 class MenuController(BaseController):
-    _displayer = MenuDisplayer
 
-    def __init__(self, key, name, values):
+    def __init__(self, key, name, values, displayer=MenuDisplayer):
         super().__init__(key=key, name=name)
+        self._displayer = displayer
         self._parent = None
         self._key = key
         self._values = values

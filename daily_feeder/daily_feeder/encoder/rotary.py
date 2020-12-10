@@ -1,4 +1,5 @@
 import logging
+
 try:
     from daily_feeder.encoder.pi import PiRotery as Rotary
 except ImportError:
@@ -6,34 +7,55 @@ except ImportError:
 
 
 rotary = None
-curr_controller = None
+base_display = None
+curr_display = None
+max_timeout = 20
+timeout_counter = 0
 
-def rotary_callback():
+
+def _rotary_callback():
     logging.debug("Rotate Callback")
-    curr_controller.display_index(rotary.counter)
+    _change_timeout(0)
+    curr_display.display_index(rotary.counter)
 
 
-def select_short():
-    global curr_controller
+def refresh_callback():
+    global curr_display
+    if timeout_counter >= max_timeout:
+        logging.debug(f"Refresh Timeout Exceeded: {timeout_counter}")
+        _set_menu(base_display)
+    elif curr_display is base_display:
+        curr_display.display_index(rotary.counter)
+    else:
+        logging.debug(f"Inc Refresh Timeout: {timeout_counter}")
+        _change_timeout(timeout_counter + 1)
+
+
+def _select_short():
+    global curr_display
     logging.debug("Select Callback")
-    set_menu(curr_controller.select_index(rotary.counter))
+    _set_menu(curr_display.select_index(rotary.counter))
 
 
-def set_menu(controller):
-    global curr_controller
-    curr_controller = controller
-    logging.debug(f"set menu: {controller} max:{curr_controller.max_count()}, curr:{curr_controller.current_count()}")
-    rotary.reset(0, curr_controller.max_count()-1, curr_controller.current_count())
-    rotary_callback()
+def _set_menu(controller):
+    global curr_display
+    _change_timeout(0)
+    curr_display = controller
+    logging.debug(f"set menu: {controller} max:{curr_display.max_count()}, curr:{curr_display.current_count()}")
+    rotary.reset(0, curr_display.max_count() - 1, curr_display.current_count())
+    _rotary_callback()
 
 
-def select_long(*args, **kwargs):
-    logging.info("Select Long Callback")
+def _change_timeout(timeout):
+    global timeout_counter
+    timeout_counter = timeout
 
 
 def watch(displayer):
     logging.info("Start Watch")
-    global rotary
-    rotary = Rotary(displayer, select_callback=select_short, rotate_callback=rotary_callback)
-    set_menu(displayer)
+    global rotary, base_display
+    base_display = displayer
+    rotary = Rotary(displayer, select_callback=_select_short, rotate_callback=_rotary_callback)
+    _set_menu(displayer)
+
     rotary.watch()

@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime, time
 
 
 max_display = 3
@@ -74,3 +75,13 @@ class CounterDisplayer:
         self._counter.write()
 
         return self._counter.parent_displayer()
+
+
+class MainDisplayer(MenuDisplayer):
+    def display_index(self, selected_index):
+        now = datetime.now()
+        values = [
+            f"{now.hour}:{now.minute}:{now.second}"
+        ]
+        logging.info(f"DISPLAY MAIN: {values[0]}")
+        self._printer("DAILY FEEDER", values)

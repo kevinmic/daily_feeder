@@ -39,6 +39,3 @@ class FakeRotery:
 
             elif val == 67 or val == 68:
                 self._select_callback()
-
-            else:
-                self._rotate_callback()

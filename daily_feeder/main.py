@@ -1,10 +1,33 @@
 import logging
+import threading
+from time import sleep
 
 import daily_feeder.data_saver
-from daily_feeder.encoder.rotary import watch
+from daily_feeder.displayer import MainDisplayer
+from daily_feeder.encoder.rotary import watch, refresh_callback
 from daily_feeder.menu import SecondCounter, MenuController, ProgramSettingsMenuController, HourCounter, MinuteCounter
 from daily_feeder.printer.lcd import print_lcd
 from daily_feeder.pump.controller import PumpController
+
+
+class RefreshDisplay(threading.Thread):
+    _quit = False
+
+    def __init__(self, refresh_callback, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.refresh_callback = refresh_callback
+
+    def run(self):
+        logging.info("Starting Refresh Thread")
+
+        while not self._quit:
+            sleep(1)
+            self.refresh_callback()
+
+        logging.info("Quitting Refresh Thread")
+
+    def quit(self):
+        self._quit = True
 
 
 def load_menu(properties, printer):
@@ -24,18 +47,20 @@ def load_menu(properties, printer):
         clock_m,
     ])
 
-    main_menu.load(properties, printer)
-    return (main_menu, [program_1, program_2])
+    starting_view = MenuController('', 'Daily Feeder', displayer=MainDisplayer, values=[main_menu])
+    starting_view.load(properties, printer)
+    return starting_view, [program_1, program_2]
 
 
-MAIN_MENU, programs = load_menu(daily_feeder.data_saver.read(), print_lcd)
-pump_controller = PumpController(programs)
-pump_controller.start()
+STARTING_VIEW, programs = load_menu(daily_feeder.data_saver.read(), print_lcd)
+threads = [PumpController(programs), RefreshDisplay(refresh_callback)]
 
 try:
-    watch(MAIN_MENU.displayer())
+    for thread in threads:
+        thread.start()
+    watch(STARTING_VIEW.displayer())
 except KeyboardInterrupt:
-    pump_controller.quit()
-except:
     logging.exception("Unexpected error")
-    pump_controller.quit()
+finally:
+    for thread in threads:
+        thread.quit()
