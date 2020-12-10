@@ -54,8 +54,8 @@ class Counter(BaseDisplayer):
 
         self._controller = controller
 
-    def value_as_string(self, count = None):
-        value = count if count else self._value
+    def value_as_string(self, count=None):
+        value = count if count is not None else self._value
         value = str(value)
         if self._value_postfix:
             value += self._value_postfix
@@ -199,16 +199,19 @@ class ProgramSettings(MenuItem):
             # the offset is now() so jump to the next offset
             increment_offset = increment
 
-        curr_date = datetime.combine(date.today(), time()) + timedelta(minutes=curr_minute)
+        curr_datetime = datetime.combine(date.today(), time()) + timedelta(minutes=curr_minute)
         next_offset = datetime.combine(date.today(), time()) + timedelta(minutes=curr_minute + increment_offset)
-        start_date = datetime.combine(date.today(), time(hour=self.start_hour()))
-        if start_date < curr_date:
-            start_date = start_date + timedelta(days=1)
+        start_datetime = datetime.combine(date.today(), time(hour=self.start_hour()))
 
-        if curr_date < start_date and next_offset >= start_date:
-            # If the current time and the offset time crossse the start boundry, then set
+        if start_datetime < curr_datetime:
+            # We are trying to detect when the offset crosses the start boundry. When start is before
+            # current this can only happen on the next day's start boundary
+            start_datetime = start_datetime + timedelta(days=1)
+
+        if curr_datetime < start_datetime and next_offset >= start_datetime:
+            # If the current time and the offset time crosses the start boundary, then set
             # the next offset to the start hour
-            next_offset = start_date
+            next_offset = start_datetime
 
         if (next_offset.hour * 60 + next_offset.minute) in allowed_minutes:
             return next_offset
