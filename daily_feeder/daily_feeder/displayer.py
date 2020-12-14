@@ -93,9 +93,9 @@ class MainDisplayer(MenuDisplayer):
 
     def _display_pump_active(self):
         if self._pump_controller:
-            active_run = self._pump_controller.active_run()
+            active_run = self._pump_controller.print_active_dose()
             if active_run:
-                self._printer("DAILY FEEDER", ["RUNNING NOW"])
+                self._printer("DAILY FEEDER", active_run)
                 return True
 
         return False

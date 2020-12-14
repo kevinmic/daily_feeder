@@ -7,7 +7,7 @@ from daily_feeder.displayer import MainDisplayer
 from daily_feeder.encoder.rotary import watch, refresh_callback
 from daily_feeder.menu import SecondCounter, MenuController, ProgramSettingsMenuController, HourCounter, MinuteCounter
 from daily_feeder.printer.lcd import print_lcd
-from daily_feeder.pump.controller import PumpController
+from daily_feeder.pump.thread_controller import PumpController
 from daily_feeder.data_saver import add_write_hook
 
 

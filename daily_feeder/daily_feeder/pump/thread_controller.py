@@ -4,11 +4,30 @@ import threading
 import logging
 
 
+class MotorController:
+    def __init__(self, name):
+        self._name = name
+
+    def on(self):
+        logging.info(f"TURN ON {self._name}")
+
+    def off(self):
+        logging.info(f"TURN OFF {self._name}")
+
+    def name(self):
+        return self._name
+
+
+STIRRING_MOTOR = MotorController('STIRRER')
+DOSING_PUMP = MotorController('PUMP')
+
+
 class PumpController(threading.Thread):
     _quit = False
     _run_list = []
     _run_dict = {}
     _reset = False
+    _active_dose = None
 
     def __init__(self, programs, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -60,14 +79,11 @@ class PumpController(threading.Thread):
             self._run_dict[key] = None
             if not skip:
                 if now < (runtime + timedelta(minutes=1)):
-                    self._run_dose(self._programs[key])
+                    self._active_dose = Dose(self._programs[key])
+                    self._active_dose.run()
+                    self._active_dose = None
                 else:
                     logging.warning(f"SKIPPING PROGRAM - {key}")
-
-    def _run_dose(self, program):
-        dose = program.dose_seconds()
-        stir = program.stir_seconds()
-        logging.warning(f"RUNNING PROGRAM - program:{program.data_key()} stir:{stir} dose:{dose}")
 
     def _menu_timeout(self):
         pass
@@ -85,8 +101,9 @@ class PumpController(threading.Thread):
             return self._run_list[0][0]
         return None
 
-    def active_run(self):
-        # TODO:
+    def print_active_dose(self):
+        if self._active_dose:
+            return self._active_dose.print_lines()
         return None
 
     def reset(self):
@@ -94,4 +111,55 @@ class PumpController(threading.Thread):
         self._reset = True
 
     def quit(self):
-        self._quit = True;
+        self._quit = True
+
+
+class Dose:
+    _done = False
+    _stir = None
+    _dose = None
+
+    def __init__(self, program):
+        self._program = program
+        self._dose = TimedPinController(self._program.dose_seconds(), DOSING_PUMP)
+        self._stir = TimedPinController(self._program.stir_seconds(), STIRRING_MOTOR)
+
+    def run(self):
+        logging.warning(f"RUNNING PROGRAM - program:{self._program.data_key()} stir:{self._stir.remaining_seconds()} "
+                        f"dose:{self._dose.remaining_seconds()}")
+        try:
+            self._stir.start()
+            while self._stir.remaining_seconds() > 0:
+                sleep(0.1)
+
+            self._dose.start()
+            while self._dose.remaining_seconds() > 0:
+                sleep(0.1)
+        finally:
+            self._dose.end()
+            self._stir.end()
+
+    def print_lines(self):
+        return ['RUNNING: ' + self._program.name(), str(self._stir), str(self._dose)]
+
+
+class TimedPinController:
+    def __init__(self, total_seconds, motor):
+        self._total_seconds = total_seconds
+        self._motor = motor
+        self._started = None
+
+    def __str__(self):
+        return f"{self._motor.name()}: {self.remaining_seconds()} seconds"
+
+    def start(self):
+        if not self._started:
+            self._started = datetime.now()
+            self._motor.on()
+
+    def end(self):
+        self._motor.off()
+
+    def remaining_seconds(self):
+        run_seconds = (datetime.now() - self._started).seconds if self._started else 0
+        return self._total_seconds - run_seconds

@@ -5,7 +5,7 @@ Raspberry Pi controlled daily fishtank feeder.
 sudo apt update
 sudo apt full-upgrade
 apt-get install python3-pip
-sudo apt install python3-rpi.gpio
+sudo apt install python3-gpiozero
 sudo apt-get install python-smbus
 sudo apt-get install i2c-tools
 
